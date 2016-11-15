@@ -86,41 +86,4 @@ public class GreetingsTest
       assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night1));
       assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night2));
    }
-   
-   @Test
-   public void changeLocaleAllMessages() {
-
-      Locale customLocale = new Locale("en", "US");
-      ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, customLocale);
-      messageResource.setLocale(customLocale);
-      
-      Date morning = null, day = null, evening = null, night = null;
-      try
-      {
-         morning = dateFormat.parse("08:11:00");
-         day = dateFormat.parse("15:11:00");
-         evening = dateFormat.parse("20:42:31");
-         night = dateFormat.parse("00:57:03");
-      } catch (ParseException e)
-      {
-         System.err.println("Exception during parsing date");
-      }
-      
-      assertEquals(messages.getString(MORNING), messageResource.getGreetingsMessage(morning));
-      assertEquals(messages.getString(DAY), messageResource.getGreetingsMessage(day));
-      assertEquals(messages.getString(EVENING), messageResource.getGreetingsMessage(evening));
-      assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night));
-
-      customLocale = new Locale("ru", "RU");
-      messages = ResourceBundle.getBundle(RESOURCES_LOCATION, customLocale);
-      messageResource.setLocale(customLocale);
-      
-      assertEquals(messages.getString(MORNING), messageResource.getGreetingsMessage(morning));
-      assertEquals(messages.getString(DAY), messageResource.getGreetingsMessage(day));
-      assertEquals(messages.getString(EVENING), messageResource.getGreetingsMessage(evening));
-      assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night));
-
-   }
-
-
 }
