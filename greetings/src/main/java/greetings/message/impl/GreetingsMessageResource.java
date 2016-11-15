@@ -15,19 +15,11 @@ public class GreetingsMessageResource implements IMessageResource
    public GreetingsMessageResource(IGreetingsHandler greetingsHandler) {
       this.greetingsHandler = greetingsHandler;
       this.messages = ResourceBundle.getBundle("resources.Messages", Locale.getDefault());
-      
-      // this.messages = getResourceBoundle(Locale.getDefault());
    }
 
    public String getGreetingsMessage(Date currentDate)
    {
       return greetingsHandler.handleRequest(currentDate, messages);
-   }
-
-   public void setLocale(Locale locale)
-   {
-      messages = ResourceBundle.getBundle("resources.Messages",locale);
-      // messages = getResourceBoundle(locale);
    }
 
 }

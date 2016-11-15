@@ -11,12 +11,6 @@
 
 	<bean name="GreetingsMessageResource" class="main.java.greetings.message.impl.GreetingsMessageResource">
 		<constructor-arg ref="MorningHandler" />
-		
-		<!-- <property name="locale">
-			<bean class="java.util.Locale" factory-method="forLanguageTag">
-				<constructor-arg value="ru-RU" />
-			</bean>
-		</property> -->
 	</bean>
 	
 	<bean name="FinalHandler" class="main.java.greetings.chain.impl.FinalHandler" />
