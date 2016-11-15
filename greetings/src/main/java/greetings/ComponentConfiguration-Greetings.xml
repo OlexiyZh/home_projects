@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<bean name="GreetingsMessageResource" class="main.java.greetings.message.impl.GreetingsMessageResource">
+		<constructor-arg ref="MorningHandler" />
+		
+		<!-- <property name="locale">
+			<bean class="java.util.Locale" factory-method="forLanguageTag">
+				<constructor-arg value="ru-RU" />
+			</bean>
+		</property> -->
+	</bean>
+	
+	<bean name="FinalHandler" class="main.java.greetings.chain.impl.FinalHandler" />
+
+	<bean name="NightHandler" class="main.java.greetings.chain.impl.NightHandler">
+		<constructor-arg ref="FinalHandler" />
+	</bean>
+	
+	<bean name="EveningHandler" class="main.java.greetings.chain.impl.EveningHandler">
+		<constructor-arg ref="NightHandler" />
+	</bean>
+	
+	<bean name="DayHandler" class="main.java.greetings.chain.impl.DayHandler">
+		<constructor-arg ref="EveningHandler" />
+	</bean>
+
+	<bean name="MorningHandler" class="main.java.greetings.chain.impl.MorningHandler">
+		<constructor-arg ref="DayHandler" />
+	</bean>
+
+</beans>
