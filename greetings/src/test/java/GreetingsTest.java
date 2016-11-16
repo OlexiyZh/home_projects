@@ -58,20 +58,14 @@ public class GreetingsTest
    }
    
    @Test
-   public void defaultLocaleBoundaryValues() {
+   public void defaultLocaleMorningBoundaryValues() {
       ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, Locale.getDefault());
       
-      Date morning1 = null, morning2 = null, day1 = null, day2 = null, evening1 = null, evening2 = null, night1 = null, night2 = null;
+      Date morning1 = null, morning2 = null;
       try
       {
          morning1 = dateFormat.parse("06:00:00");
          morning2 = dateFormat.parse("08:59:00");
-         day1 = dateFormat.parse("09:00:00");
-         day2 = dateFormat.parse("18:59:59");
-         evening1 = dateFormat.parse("19:00:00");
-         evening2 = dateFormat.parse("22:59:59");
-         night1 = dateFormat.parse("23:00:00");
-         night2 = dateFormat.parse("05:59:59");
       } catch (ParseException e)
       {
          System.err.println("Exception during parsing date");
@@ -79,10 +73,58 @@ public class GreetingsTest
       
       assertEquals(messages.getString(MORNING), messageResource.getGreetingsMessage(morning1));
       assertEquals(messages.getString(MORNING), messageResource.getGreetingsMessage(morning2));
+   }
+   
+   @Test
+   public void defaultLocaleDayBoundaryValues() {
+      ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, Locale.getDefault());
+      
+      Date day1 = null, day2 = null;
+      try
+      {
+         day1 = dateFormat.parse("09:00:00");
+         day2 = dateFormat.parse("18:59:59");
+      } catch (ParseException e)
+      {
+         System.err.println("Exception during parsing date");
+      }
+
       assertEquals(messages.getString(DAY), messageResource.getGreetingsMessage(day1));
       assertEquals(messages.getString(DAY), messageResource.getGreetingsMessage(day2));
+   }
+   
+   @Test
+   public void defaultLocaleEveningBoundaryValues() {
+      ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, Locale.getDefault());
+      
+      Date evening1 = null, evening2 = null;
+      try
+      {
+         evening1 = dateFormat.parse("19:00:00");
+         evening2 = dateFormat.parse("22:59:59");
+      } catch (ParseException e)
+      {
+         System.err.println("Exception during parsing date");
+      }
+
       assertEquals(messages.getString(EVENING), messageResource.getGreetingsMessage(evening1));
       assertEquals(messages.getString(EVENING), messageResource.getGreetingsMessage(evening2));
+   }
+   
+   @Test
+   public void defaultLocaleNightBoundaryValues() {
+      ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, Locale.getDefault());
+      
+      Date night1 = null, night2 = null;
+      try
+      {
+         night1 = dateFormat.parse("23:00:00");
+         night2 = dateFormat.parse("05:59:59");
+      } catch (ParseException e)
+      {
+         System.err.println("Exception during parsing date");
+      }
+
       assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night1));
       assertEquals(messages.getString(NIGHT), messageResource.getGreetingsMessage(night2));
    }
