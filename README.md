@@ -3,7 +3,7 @@ greetings project
 [![Build Status](https://travis-ci.org/OlexiyZh/home_projects.png)](https://travis-ci.org/OlexiyZh/home_projects)
 
 ---
-##### Task description:
+#### Task description:
 
 Write a console application on java using maven.
 
