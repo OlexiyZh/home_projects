@@ -7,21 +7,20 @@ import java.util.ResourceBundle;
 import main.java.greetings.chain.IGreetingsHandler;
 import main.java.greetings.message.IMessageResource;
 
-public class GreetingsMessageResource implements IMessageResource
-{
-   private IGreetingsHandler greetingsHandler;
-   private ResourceBundle messages;
-   
-   public GreetingsMessageResource(IGreetingsHandler greetingsHandler) {
-      this.greetingsHandler = greetingsHandler;
-      this.messages = ResourceBundle.getBundle("resources.Messages", Locale.getDefault());
-   }
+public class GreetingsMessageResource implements IMessageResource {
+	private IGreetingsHandler greetingsHandler;
+	private ResourceBundle messages;
 
-   public String getGreetingsMessage(Date currentDate) {
-      if (currentDate == null) {
+	public GreetingsMessageResource(IGreetingsHandler greetingsHandler) {
+		this.greetingsHandler = greetingsHandler;
+		this.messages = ResourceBundle.getBundle("resources.Messages", Locale.getDefault());
+	}
+
+	public String getGreetingsMessage(Date currentDate) {
+		if (currentDate == null) {
 			currentDate = new Date();
 		}
 		return greetingsHandler.handleRequest(currentDate, messages);
-   }
+	}
 
 }
