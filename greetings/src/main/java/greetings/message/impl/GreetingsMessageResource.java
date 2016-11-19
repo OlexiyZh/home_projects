@@ -17,9 +17,11 @@ public class GreetingsMessageResource implements IMessageResource
       this.messages = ResourceBundle.getBundle("resources.Messages", Locale.getDefault());
    }
 
-   public String getGreetingsMessage(Date currentDate)
-   {
-      return greetingsHandler.handleRequest(currentDate, messages);
+   public String getGreetingsMessage(Date currentDate) {
+      if (currentDate == null) {
+			currentDate = new Date();
+		}
+		return greetingsHandler.handleRequest(currentDate, messages);
    }
 
 }
