@@ -58,6 +58,11 @@ public class GreetingsTest
    }
    
    @Test
+   public void defaultLocaleCurrrentDateIsNull() {
+      assertEquals(messageResource.getGreetingsMessage(null), messageResource.getGreetingsMessage(new Date()));
+   }
+   
+   @Test
    public void defaultLocaleMorningBoundaryValues() {
       ResourceBundle messages = ResourceBundle.getBundle(RESOURCES_LOCATION, Locale.getDefault());
       
