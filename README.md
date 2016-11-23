@@ -3,6 +3,11 @@ greetings project
 [![Build Status](https://travis-ci.org/OlexiyZh/home_projects.png)](https://travis-ci.org/OlexiyZh/home_projects)
 
 ---
+##### greetingsSimple project
+This project implements the same functionality and don't use Spring Framework and ResourceBundle.
+
+---
+
 #### Task description:
 
 Write a console application on java using maven.
